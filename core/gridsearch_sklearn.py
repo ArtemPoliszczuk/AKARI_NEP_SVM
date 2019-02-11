@@ -45,7 +45,7 @@ def deep_grid_search(clf_object, algorithm_descriptor, lstcr_dict, result_df):
     for step in range(num_of_deep_gs_loops):
         print('deep_gs', str(step))
 
-        param_grid = clf_object.get_param_grid_for_deep_gridsearch(result_df)
+        param_grid = clf_object.get_param_grid_for_deep_gridsearch(result_df, step+2)
         grid_search = get_grid_search_output(clf_object, algorithm_descriptor, lstcr_dict, param_grid)
 
         result_df = grid_search_results_df(clf_object, grid_search,

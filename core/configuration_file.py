@@ -61,7 +61,7 @@ svm_descriptor.set_parameters_for_grid_search({'C': C_values,
 """Number of folds for cross validation."""
 svm_descriptor.set_num_of_cv(5)
 """Number of steps in the deep grid search"""
-svm_descriptor.set_num_of_deep_gs_loops(2)
+svm_descriptor.set_num_of_deep_gs_loops(10)
 
 """csv data files with training, validation and generalization data."""
 training_data_dict = {'other': "other_test.csv",

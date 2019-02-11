@@ -191,10 +191,9 @@ class _Classifier:
         whole_parameter_grid = algorithm_descriptor.parameters_for_grid_search
         output_parameter_grid = {parameter: whole_parameter_grid[parameter]
                                  for parameter in self.parameters_for_tuning_list}
-
         return output_parameter_grid
 
-    def get_param_grid_for_deep_gridsearch(self, result_df):
+    def get_param_grid_for_deep_gridsearch(self, result_df, step):
 
         output_parameter_grid = {}
         parameters_that_should_be_left_the_same = ["poly", "max_features"]
@@ -203,11 +202,12 @@ class _Classifier:
             best_value = result_df.iloc[-1][parameter]
             if parameter not in parameters_that_should_be_left_the_same:
 
-                output_parameter_grid[parameter] = [best_value - best_value / 2,
+                output_parameter_grid[parameter] = [best_value - best_value / step,
                                                     best_value,
-                                                    best_value + best_value / 2]
+                                                    best_value + best_value / step]
             else:
                 output_parameter_grid[parameter] = best_value
+        print('output parameter grid\n',output_parameter_grid)
 
         return output_parameter_grid
 
